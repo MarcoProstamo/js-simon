@@ -19,3 +19,31 @@ const submitChoicesEl = document.querySelector("#submitChoices");
 function randomIntegerNumberInRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
+
+// # Variable Init
+const minNumber = 1;
+const maxNumber = 99;
+
+startGameEl.addEventListener("click", () => {
+  // * Generate Random Numbers
+  const numberOne = randomIntegerNumberInRange(minNumber, maxNumber);
+  const numberTwo = randomIntegerNumberInRange(minNumber, maxNumber);
+  const numberThree = randomIntegerNumberInRange(minNumber, maxNumber);
+  const numberFour = randomIntegerNumberInRange(minNumber, maxNumber);
+  const numberFive = randomIntegerNumberInRange(minNumber, maxNumber);
+
+  // * Show Numbers in DOM
+  numberOneEl.value = numberOne;
+  numberTwoEl.value = numberTwo;
+  numberThreeEl.value = numberThree;
+  numberFourEl.value = numberFour;
+  numberFiveEl.value = numberFive;
+
+  setTimeout(() => {
+    numberOneEl.value = "—";
+    numberTwoEl.value = "—";
+    numberThreeEl.value = "—";
+    numberFourEl.value = "—";
+    numberFiveEl.value = "—";
+  }, 3000);
+});
