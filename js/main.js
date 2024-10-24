@@ -6,6 +6,8 @@ const numberFourEl = document.querySelector("#numberFour");
 const numberFiveEl = document.querySelector("#numberFive");
 const startGameEl = document.querySelector("#startGame");
 const submitChoicesEl = document.querySelector("#submitChoices");
+const displayResultEl = document.querySelector("#displayResult");
+const correctAnswersEl = document.querySelector("#correctAnswers");
 
 // # Utility Fn
 /**
@@ -100,4 +102,8 @@ submitChoicesEl.addEventListener("click", () => {
       }
     }
   });
+
+  correctAnswersEl.innerText = `${correctChoiceCunter}`;
+  displayResultEl.classList.add("d-block");
+  displayResultEl.classList.remove("d-none");
 });
