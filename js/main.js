@@ -23,10 +23,16 @@ function randomIntegerNumberInRange(min, max) {
 }
 
 let savedArray = [];
+/**
+ *
+ * Saves a given array
+ *
+ * @param {object} array to be saved
+ * @param {boolean} override true: save array | false: retrieve saved array
+ * @returns {object}
+ */
 function saveArray(array = [], override) {
   if (override) savedArray = array;
-  console.log(array, savedArray);
-
   return savedArray;
 }
 
@@ -36,6 +42,15 @@ const maxNumber = 99;
 
 // # Game Start
 startGameEl.addEventListener("click", () => {
+  // * Reset Classes
+  numberOneEl.classList.remove("text-success", "fw-bold");
+  numberTwoEl.classList.remove("text-success", "fw-bold");
+  numberThreeEl.classList.remove("text-success", "fw-bold");
+  numberFourEl.classList.remove("text-success", "fw-bold");
+  numberFiveEl.classList.remove("text-success", "fw-bold");
+  displayResultEl.classList.add("d-none");
+  displayResultEl.classList.remove("d-block");
+
   // * Generate Random Numbers
   const numberOne = randomIntegerNumberInRange(minNumber, maxNumber);
   const numberTwo = randomIntegerNumberInRange(minNumber, maxNumber);
@@ -60,11 +75,13 @@ startGameEl.addEventListener("click", () => {
     numberThreeEl.value = "—";
     numberFourEl.value = "—";
     numberFiveEl.value = "—";
-  }, 3000);
+  }, 2000);
 });
 
 // # Submit Choices
+
 submitChoicesEl.addEventListener("click", () => {
+  // * Init User Numbers
   const numberOneToValidate = parseInt(numberOneEl.value.trim());
   const numberTwoToValidate = parseInt(numberTwoEl.value.trim());
   const numberThreeToValidate = parseInt(numberThreeEl.value.trim());
@@ -79,6 +96,7 @@ submitChoicesEl.addEventListener("click", () => {
     numberFiveToValidate,
   ];
 
+  // * Check User Numbers
   let correctChoiceCunter = 0;
   numbersToValidate.forEach((number, i) => {
     if (savedArray.includes(number)) {
@@ -103,6 +121,7 @@ submitChoicesEl.addEventListener("click", () => {
     }
   });
 
+  // * Output
   correctAnswersEl.innerText = `${correctChoiceCunter}`;
   displayResultEl.classList.add("d-block");
   displayResultEl.classList.remove("d-none");
